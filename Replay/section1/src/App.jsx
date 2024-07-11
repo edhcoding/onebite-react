@@ -1,4 +1,4 @@
-import { useCallback, useReducer, useRef } from "react";
+import { createContext, useCallback, useReducer, useRef } from "react";
 import "./App.css";
 import Editor from "./components/Editor";
 import Header from "./components/Header";
@@ -59,6 +59,9 @@ function reducer(state, action) {
       return state;
   }
 }
+
+// context는 함수 밖에서 정의함, 안에서 정의하면 리렌더링 발생
+export const TodoContext = createContext();
 
 // npm create vite@latest로 설치
 function App() {
@@ -123,8 +126,10 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Editor onCreate={onCreate} />
-      <List onUpdate={onUpdate} todos={todos} onDelete={onDelete} />
+      <TodoContext.Provider value={{ todos, onCreate, onUpdate, onDelete }}>
+        <Editor />
+        <List />
+      </TodoContext.Provider>
     </div>
   );
 }
