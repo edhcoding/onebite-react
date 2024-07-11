@@ -1,4 +1,4 @@
-import { createContext, useCallback, useReducer, useRef } from "react";
+import { createContext, useCallback, useMemo, useReducer, useRef } from "react";
 import "./App.css";
 import Editor from "./components/Editor";
 import Header from "./components/Header";
@@ -61,7 +61,10 @@ function reducer(state, action) {
 }
 
 // context는 함수 밖에서 정의함, 안에서 정의하면 리렌더링 발생
-export const TodoContext = createContext();
+// export const TodoContext = createContext();
+// context 분리
+export const TodoStateContext = createContext();
+export const TodoDispatchContext = createContext();
 
 // npm create vite@latest로 설치
 function App() {
@@ -123,13 +126,21 @@ function App() {
     });
   }, []);
 
+  // <TodoDispatchContext.Provider value={{ onCreate, onUpdate, onDelete }}> 이렇게 쓰면 App 컴포넌트에 있는 todos가 바뀌면서 다시 리렌더링 될거임
+  // 그럼 context를 분리한 이유가 없음 그래서 { onCreate, onUpdate, onDelete } 이 객체를 다시 생성하지 않도록 => useMemo 사용하면 됨
+  const memoizedDispatch = useMemo(() => {
+    return { onCreate, onUpdate, onDelete };
+  }, []);
+
   return (
     <div className="App">
       <Header />
-      <TodoContext.Provider value={{ todos, onCreate, onUpdate, onDelete }}>
-        <Editor />
-        <List />
-      </TodoContext.Provider>
+      <TodoStateContext.Provider value={{ todos }}>
+        <TodoDispatchContext.Provider value={memoizedDispatch}>
+          <Editor />
+          <List />
+        </TodoDispatchContext.Provider>
+      </TodoStateContext.Provider>
     </div>
   );
 }

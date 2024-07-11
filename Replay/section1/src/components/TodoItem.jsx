@@ -1,12 +1,12 @@
 import { memo, useContext } from "react";
-import { TodoContext } from "../App";
+import { TodoDispatchContext } from "../App";
 import "./TodoItem.css";
 
 // toDateString Thu Jul 11 2024 년도까지만 끝 시간 안나옴
 // toLocaleDateString 2024.7.11 이렇게 나옴
 
 const TodoItem = ({ id, isDone, content, date }) => {
-  const { onUpdate, onDelete } = useContext(TodoContext);
+  const { onUpdate, onDelete } = useContext(TodoDispatchContext);
 
   const onChangeCheckbox = () => {
     onUpdate(id);
