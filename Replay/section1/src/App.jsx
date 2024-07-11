@@ -4,6 +4,12 @@ import Editor from "./components/Editor";
 import Header from "./components/Header";
 import List from "./components/List";
 
+/**
+ * useMemo - 불 필요한 연산 방지
+ * "메모이제이션" 기법을 기반으로 컴포넌트 내부에서 불필요한 연산 다시 수행하지 않도록 최적화 해줌
+ * 자메로 useCallback이 있음
+ */
+
 const mockData = [
   {
     id: 0,
