@@ -1,4 +1,4 @@
-import React, { KeyboardEvent, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import "./Editor.css";
 
 export default function Editor({ onCreate }) {
@@ -9,7 +9,7 @@ export default function Editor({ onCreate }) {
     setContent(e.target.value);
   };
 
-  const onKeydown = (e) => {
+  const onKeyDown = (e) => {
     if (e.keyCode === 13) {
       onSubmit();
     }
@@ -29,7 +29,7 @@ export default function Editor({ onCreate }) {
       <input
         ref={contentRef}
         value={content}
-        onKeyDown={onKeydown} // onKeyDown 대소문자 주의!
+        onKeyDown={onKeyDown} // onKeyDown 대소문자 주의!
         onChange={onChangeContent}
         placeholder="새로운 Todo..."
       />

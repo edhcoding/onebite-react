@@ -1,4 +1,4 @@
-import { useReducer, useRef, useState } from "react";
+import { useReducer, useRef } from "react";
 import "./App.css";
 import Editor from "./components/Editor";
 import Header from "./components/Header";
@@ -8,6 +8,13 @@ import List from "./components/List";
  * useMemo - 불 필요한 연산 방지
  * "메모이제이션" 기법을 기반으로 컴포넌트 내부에서 불필요한 연산 다시 수행하지 않도록 최적화 해줌
  * 자메로 useCallback이 있음
+ */
+
+/**
+ * React.memo - 컴포넌트를 인수로 받아, 최적화된 컴포넌트로 만들어 반환함
+ * ex) const MemoizedComponent = memo(component)
+ * 인수로는 컴포넌트, MemoizedComponent 반환값: 최적화된 컴포넌트 props를 기준으로 메모이제이션 됨
+ * 이제부터 MemoizedComponent는 부모 컴포넌트가 리렌더링 되더라도 자신이 받는 props가 변하지 않는이상 리렌더링이 안됨
  */
 
 const mockData = [
