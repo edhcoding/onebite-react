@@ -30,14 +30,18 @@ const TodoItem = ({ id, isDone, content, date, onUpdate, onDelete }) => {
 // 방법2가지
 // 1. app 컴포넌트로 가서 함수들 자체를 메모이제이션해서 리렌더링 되더라도 다시 생성되지 않게 방지하는 방법
 // 2. memo 인수의 두 번째 인수로 콜백함수를 전달해서 최적화 기능을 커스터마이징 해주면 됨
-export default memo(TodoItem, (prevProps, nextProps) => {
-  // 반환값에 따라, props가 바뀌었는지 안바뀌었는지 판단함
-  // T반환하면 => props가 바뀌지 않았다고판단 => 리렌더링 안됨
-  // F => props 바뀜 => 리렌더링 됨
-  if (prevProps.id !== nextProps.id) return false;
-  if (prevProps.isDone !== nextProps.isDone) return false;
-  if (prevProps.content !== nextProps.content) return false;
-  if (prevProps.date !== nextProps.date) return false;
 
-  return true;
-});
+// export default memo(TodoItem, (prevProps, nextProps) => {
+//   // 반환값에 따라, props가 바뀌었는지 안바뀌었는지 판단함
+//   // T반환하면 => props가 바뀌지 않았다고판단 => 리렌더링 안됨
+//   // F => props 바뀜 => 리렌더링 됨
+//   if (prevProps.id !== nextProps.id) return false;
+//   if (prevProps.isDone !== nextProps.isDone) return false;
+//   if (prevProps.content !== nextProps.content) return false;
+//   if (prevProps.date !== nextProps.date) return false;
+
+//   return true;
+// });
+
+// useCallback을 사용했으므로 위에 코드는 다 주석처리하고 memo 메서드만 사용해서 작성하면 됨
+export default memo(TodoItem);
