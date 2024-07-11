@@ -1,9 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { KeyboardEvent, useRef, useState } from "react";
 import "./Editor.css";
 
 export default function Editor({ onCreate }) {
   const [content, setContent] = useState("");
-  const contentRef = useRef();
+  const contentRef = useRef<HTMLInputElement>(null);
 
   const onChangeContent = (e) => {
     setContent(e.target.value);
@@ -17,7 +17,7 @@ export default function Editor({ onCreate }) {
 
   const onSubmit = () => {
     if (content === "") {
-      contentRef.current.focus();
+      contentRef.current?.focus();
       return;
     }
     onCreate(content);
@@ -29,7 +29,7 @@ export default function Editor({ onCreate }) {
       <input
         ref={contentRef}
         value={content}
-        onKeydown={onKeydown}
+        onKeyDown={onKeydown} // onKeyDown 대소문자 주의!
         onChange={onChangeContent}
         placeholder="새로운 Todo..."
       />

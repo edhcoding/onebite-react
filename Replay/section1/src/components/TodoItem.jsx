@@ -1,11 +1,14 @@
 import "./TodoItem.css";
 
-export default function TodoItem() {
+// toDateString Thu Jul 11 2024 년도까지만 끝 시간 안나옴
+// toLocaleDateString 2024.7.11 이렇게 나옴
+
+export default function TodoItem({ id, isDone, content, date }) {
   return (
     <div className="TodoItem">
-      <input type="checkbox" />
-      <div className="content">Todo...</div>
-      <div className="date">Date</div>
+      <input checked={isDone} type="checkbox" />
+      <div className="content">{content}</div>
+      <div className="date">{new Date(date).toLocaleDateString()}</div>
       <button>삭제</button>
     </div>
   );
