@@ -9,6 +9,10 @@ import Notfound from "./pages/Notfound";
 // 2. /new - 새로운 일기를 작성하는 New 페이지
 // 3. /diary - 일기를 상세히 조회하는 Diary 페이지
 
+// Link - html의 a태그와 같은 기능
+// <Link to={"/"}>Home</Link>
+// useNavigate - 함수를 이용해서 특정 이벤트가 발생했을 때 페이지를 이동시키는 방법
+
 function App() {
   return (
     <Routes>
