@@ -3,6 +3,8 @@ import Home from "./pages/Home";
 import New from "./pages/New";
 import Diary from "./pages/Diary";
 import Notfound from "./pages/Notfound";
+import Button from "./components/Button";
+import Header from "./components/Header";
 import "./App.css";
 
 // 1. / - 모든 일기를 조회하는 Home 페이지
@@ -15,12 +17,20 @@ import "./App.css";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/new" element={<New />} />
-      <Route path="/diary/:id" element={<Diary />} />
-      <Route path="*" element={<Notfound />} />
-    </Routes>
+    <>
+      <Header
+        title={"Header"}
+        leftChild={<Button text={"Left"} />}
+        rightChild={<Button text={"Right"} />}
+      />
+      <Button />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/new" element={<New />} />
+        <Route path="/diary/:id" element={<Diary />} />
+        <Route path="*" element={<Notfound />} />
+      </Routes>
+    </>
   );
 }
 
