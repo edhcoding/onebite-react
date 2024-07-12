@@ -83,39 +83,16 @@ export default function App() {
   };
 
   return (
-    <>
-      <button
-        onClick={() => {
-          onCreate(new Date().getTime(), 1, "HELLO");
-        }}
-      >
-        생성 버튼
-      </button>
-      <button
-        onClick={() => {
-          onUpdate(1, new Date().getTime(), 2, "HI");
-        }}
-      >
-        수정 버튼
-      </button>
-      <button
-        onClick={() => {
-          onDelete(1);
-        }}
-      >
-        삭제 버튼
-      </button>
-      <DiaryStateContext.Provider value={data}>
-        <DiaryDispatchContext.Provider value={{ onCreate, onUpdate, onDelete }}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/new" element={<New />} />
-            <Route path="/diary/:id" element={<Diary />} />
-            <Route path="/edit/:id" element={<Edit />} />
-            <Route path="*" element={<Notfound />} />
-          </Routes>
-        </DiaryDispatchContext.Provider>
-      </DiaryStateContext.Provider>
-    </>
+    <DiaryStateContext.Provider value={data}>
+      <DiaryDispatchContext.Provider value={{ onCreate, onUpdate, onDelete }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/new" element={<New />} />
+          <Route path="/diary/:id" element={<Diary />} />
+          <Route path="/edit/:id" element={<Edit />} />
+          <Route path="*" element={<Notfound />} />
+        </Routes>
+      </DiaryDispatchContext.Provider>
+    </DiaryStateContext.Provider>
   );
 }
