@@ -4,7 +4,7 @@ import Button from "./Button";
 import DiaryItem from "./DiaryItem";
 import "./DiaryList.css";
 
-export default function DiaryList({ data }) {
+export default function DiaryList({ monthlyData }) {
   const nav = useNavigate();
 
   const [sortType, setSortType] = useState("latest");
@@ -14,7 +14,7 @@ export default function DiaryList({ data }) {
   };
 
   const getSortedData = () => {
-    return data.toSorted((a, b) => {
+    return monthlyData.toSorted((a, b) => {
       if (sortType === "oldest") {
         return Number(a.createdDate) - Number(b.createdDate); // 오름차순
       } else {

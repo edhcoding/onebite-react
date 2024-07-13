@@ -31,7 +31,7 @@ const getMonthlyData = (pivotDate, data) => {
 export default function Home() {
   const data = useContext(DiaryStateContext);
 
-  const [pivotDate, setPivotDate] = useState(new Date());
+  const [pivotDate, setPivotDate] = useState(new Date()); // Sat Jul 13 2024 18:38:16 GMT+0900 (한국 표준시)
 
   const monthlyData = getMonthlyData(pivotDate, data);
 
@@ -50,7 +50,7 @@ export default function Home() {
         leftChild={<Button text={"<"} onClick={onDecreaseMonth} />}
         rightChild={<Button text={">"} onClick={onIncreaseMonth} />}
       />
-      <DiaryList data={monthlyData} />
+      <DiaryList monthlyData={monthlyData} />
     </div>
   );
 }
