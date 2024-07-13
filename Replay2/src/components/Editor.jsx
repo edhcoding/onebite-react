@@ -1,8 +1,8 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 import EmotionItem from "./EmotionItem";
 import "./Editor.css";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const emotionList = [
   {
@@ -44,7 +44,7 @@ const getStringedDate = (targetDate) => {
   return `${year}-${month}-${date}`;
 };
 
-export default function Editor({ onSubmit }) {
+export default function Editor({ initData, onSubmit }) {
   // 하나의 input에 날짜, 감정, 일기 전부 저장할거임
   // 이럴때는 state를 객체로 만들어야 함
   const [input, setInput] = useState({
@@ -54,6 +54,15 @@ export default function Editor({ onSubmit }) {
   });
 
   const nav = useNavigate();
+
+  useEffect(() => {
+    if (initData) {
+      setInput({
+        ...initData,
+        createdDate: new Date(Number(initData.createdDate)),
+      });
+    }
+  }, [initData]);
 
   const onChangeInput = (e) => {
     // console.log(e.target.name); // 어떤 요소에 입력이 들어올건지
