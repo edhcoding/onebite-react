@@ -70,6 +70,13 @@ export default function App() {
         content,
       },
     });
+    // const newDiary = {
+    //   id: idRef.current++,
+    //   createdDate,
+    //   emotionId,
+    //   content,
+    // };
+    // setData([newDiary, ...data]);
   };
 
   // 기존 일기 수정
@@ -78,6 +85,11 @@ export default function App() {
       type: "UPDATE",
       data: { id, createdDate, emotionId, content },
     });
+    // setData((prevData) =>
+    //   prevData.map((item) =>
+    //     String(item.id) === String(id) ? { id, createdDate, emotionId, content } : item
+    //   )
+    // );
   };
 
   // 기존 일기 삭제
@@ -86,6 +98,7 @@ export default function App() {
       type: "DELETE",
       id,
     });
+    // setData((prevData) => prevData.filter((item) => String(item.id) !== String(id)));
   };
 
   return (
