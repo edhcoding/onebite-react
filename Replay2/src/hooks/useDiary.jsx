@@ -20,7 +20,7 @@ export default function useDiary(id) {
     }
 
     setCurDiaryItem(currentDiaryItem);
-  }, [id, data]);
+  }, [id, data, nav]);
 
   return curDiaryItem;
 }
