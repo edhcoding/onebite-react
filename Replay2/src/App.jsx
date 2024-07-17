@@ -15,6 +15,14 @@ import "./App.css";
 // <Link to={"/"}>Home</Link>
 // useNavigate - 함수를 이용해서 특정 이벤트가 발생했을 때 페이지를 이동시키는 방법
 
+/**
+ * 배포 전 준비사항
+ * 1. 페이지 타이틀 설정하기
+ * 2. Favicon 설정하기
+ * 3. 오픈 그래프 태그 설정하기
+ * 4. 프로젝트 빌드(build)
+ */
+
 // const mockData = [
 //   {
 //     id: 1,
@@ -157,7 +165,7 @@ export default function App() {
   };
 
   if (isLoading) {
-    return <div>데이터 로딩중입니다 ...</div>
+    return <div>데이터 로딩중입니다 ...</div>;
   }
 
   return (
