@@ -23,6 +23,24 @@ import "./App.css";
  * 4. 프로젝트 빌드(build)
  */
 
+/**
+ * 현존 유명한 클라우드 서비스
+ * aws, gcp, vercel, netlify, firebase
+ * 
+ * vercel 사용
+ * 1. 터미널에 vercel login 엔터
+ * continue with github 엔터
+ * 로그인 완료 됬으면 터미널에 vercel 엔터
+ * 현재 위치의 파일들 배포를 원하냐고 물어봄 맞으면 Y
+ * 어떤 vercel 계정에 적용하고 싶은지 선택
+ * 이미 존재하는 프로젝트에 연결할 건지 물어보면 N 맞으면 Y
+ * 프로젝트 이름 - ex) emotion-diary
+ * 어떤 디렉토리에 너의 코드가 위치해 있냐 물어보면 ./ <= 기본값으로 그냥 엔터
+ * vercel이 알아서 인식하고 설정을 변경할거냐 물어보면 N , 변경하고 싶으면 Y
+ * 끝
+ * 또 수정할 코드가 있다면 수정하고 터미널에 vercel 엔터 하면 => 새로운 코드 적용됨
+ */
+
 // const mockData = [
 //   {
 //     id: 1,
